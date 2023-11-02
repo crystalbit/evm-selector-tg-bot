@@ -16,8 +16,8 @@ export const findMethods = (text: string): string[] => {
       .replace(removeDetailsRegex, '')
       .replace(removeKeywordsRegex, '')
       .replace(/\s+/g, '')
-      .replace(/[^a-zA-Z]int[^0-9]/g, 'int256')
-      .replace(/[^a-zA-Z]uint[^0-9]/g, 'uint256');
+      .replace(/\bint(?![0-9])/g, 'int256')
+      .replace(/\buint(?![0-9])/g, 'uint256');
   });
   for (let i = methods.length - 1; i >= 0; i--) {
     const method = methods[i];
