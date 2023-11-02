@@ -12,7 +12,7 @@ bot.on(message('text'), async (ctx) => {
     return;
   }
   const result = findMethods(ctx.message.text);
-  console.log(result);
+  // console.log(result);
   const answer = result.length > 0 ? result.join('\n') : 'No methods found';
   await ctx.reply(answer, { parse_mode: 'HTML' });
 });
