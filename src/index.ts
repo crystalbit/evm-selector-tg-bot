@@ -11,7 +11,10 @@ const CREDITS = '\n\nSelectors and event hashes are checked against <a href="htt
 bot.on(message('text'), async (ctx) => {
   console.log(ctx.update.message.from.username ?? ctx.update.message.from.id, ctx.message.text.substring(0, 20));
   if (ctx.message.text === '/start') {
-    await ctx.reply('Hello there :)\nSend me a solidity code, selectors or/and event hashes\n\nContribute: https://github.com/crystalbit/evm-selector-tg-bot');
+    await ctx.reply(
+      'Hello there :)\nSend me a solidity code, selectors or/and event hashes\n\n<a href="https://github.com/crystalbit/evm-selector-tg-bot">Github</a>',
+      { parse_mode: 'HTML' }
+    );
     return;
   }
   // first check methods
@@ -28,7 +31,7 @@ bot.on(message('text'), async (ctx) => {
     if (data.length > 0) {
       await ctx.reply(data + CREDITS, { parse_mode: 'HTML' });
     } else {
-      await ctx.reply('No selectors and event hashes found in database' + CREDITS);
+      await ctx.reply('No selectors and event hashes found in database' + CREDITS, { parse_mode: 'HTML' });
     }
   }
 

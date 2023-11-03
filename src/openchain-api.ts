@@ -9,7 +9,7 @@ export const openChainQuery = async (selectors: string[], events: string[]): Pro
     params: {
       function: selectors.join(','),
       event: events.join(','),
-      filter: true,
+      filter: false,
     },
   });
   const data = response.data;
