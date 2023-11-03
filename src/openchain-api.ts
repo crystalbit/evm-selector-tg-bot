@@ -13,8 +13,8 @@ export const openChainQuery = async (selectors: string[], events: string[]): Pro
     },
   });
   const data = response.data;
-  const hashData: string[] = [];
   if (data.ok) {
+    const hashData: string[] = [];
     const result = data.result;
     const { function: functions, event } = result;
     // console.log('functions: ', functions);
@@ -35,6 +35,9 @@ export const openChainQuery = async (selectors: string[], events: string[]): Pro
         }
       }
     }
+    return hashData.join('\n');
+  } else {
+    console.log('openchain error: ', data);
+    return '';
   }
-  return hashData.join('\n');
 };
